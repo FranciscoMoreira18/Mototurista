@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Turístico: 3 Dias em Campo Grande para Motociclistas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 1.25rem;
+            bottom: -1.25rem;
+            width: 2px;
+            background-color: #e5e7eb;
+            transform: translateX(-50%);
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        /* Estilos para o Modal e Loader */
+        #loader-modal {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .loader {
+            border-top-color: #f59e0b;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Modal para Loader e Resultados -->
+    <div id="loader-modal" class="fixed inset-0 z-50 flex-col items-center justify-center hidden">
+        <div id="loader" class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32 mb-4"></div>
+        <h2 id="loader-text" class="text-center text-white text-xl font-semibold">Gerando conteúdo...</h2>
+        <div id="modal-content" class="hidden bg-white w-11/12 max-w-2xl rounded-xl shadow-lg p-6 md:p-8">
+            <h3 id="modal-title" class="text-2xl font-bold text-slate-900 mb-4"></h3>
+            <div id="modal-body" class="text-slate-700 max-h-[60vh] overflow-y-auto"></div>
+            <button id="close-modal-btn" class="mt-6 w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition-colors">Fechar</button>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900">Aventura em Campo Grande-MS</h1>
+            <p class="text-lg text-slate-600 mt-2">Seu Guia de 3 Dias para uma Jornada Inesquecível</p>
+        </header>
+
+        <!-- Intro -->
+        <div class="bg-white p-6 rounded-xl shadow-md mb-10">
+            <p class="text-center text-slate-700">Bem-vindo a Campo Grande, o ponto de apoio estratégico para sua jornada na Rota Bioceânica! Este roteiro foi pensado para você, mototurista, que busca uma experiência completa: estradas, cultura, gastronomia e segurança para sua máquina.</p>
+        </div>
+        
+        <!-- Gemini Feature: Personalize sua Aventura -->
+        <section id="gemini-personalize" class="mb-12 bg-white p-6 rounded-xl shadow-lg border-2 border-amber-400">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4 text-center">✨ Personalize sua Aventura</h2>
+            <p class="text-slate-600 mb-4 text-center">Diga à nossa IA o que você mais gosta (ex: "foco em gastronomia", "mais natureza e menos cidade", "história local") e receba um roteiro ajustado!</p>
+            <div class="flex flex-col sm:flex-row gap-2">
+                <input type="text" id="user-preference-input" class="flex-grow p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Ex: Foco em culinária e bares de rock">
+                <button id="personalize-btn" class="bg-amber-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-600 transition-colors">Gerar Roteiro Personalizado</button>
+            </div>
+            <div id="personalized-itinerary" class="mt-6"></div>
+        </section>
+
+        <!-- Hospedagem Section -->
+        <section id="hospedagem" class="mb-12">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-geo-alt-fill mr-3 text-amber-500" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                Hospedagem com Garagem Segura
+            </h2>
+            <p class="text-slate-600 mb-6">A pesquisa indicou que 87% dos motociclistas se sentem seguros com os estacionamentos da cidade. Aqui estão algumas ótimas opções:</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Hotel Card -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg text-slate-900">Hotel Deville Prime</h3>
+                    <p class="text-slate-600 mt-2">Estrutura sofisticada com estacionamento coberto. Ideal para máximo conforto.</p>
+                </div>
+                <!-- Hotel Card -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg text-slate-900">Novotel Campo Grande</h3>
+                    <p class="text-slate-600 mt-2">Padrão de qualidade internacional com estacionamento seguro e de fácil acesso.</p>
+                </div>
+                <!-- Hotel Card -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-lg text-slate-900">Ibis Budget</h3>
+                    <p class="text-slate-600 mt-2">Excelente custo-benefício com a segurança de um estacionamento monitorado.</p>
+                </div>
+            </div>
+             <div class="mt-6 bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 rounded-r-lg" role="alert">
+                <p class="font-bold">Dica Tech</p>
+                <p>Antes de reservar, envie uma mensagem ao hotel confirmando se há vagas exclusivas ou cobertas para motocicletas.</p>
+            </div>
+        </section>
+
+        <!-- Itinerary Section -->
+        <section id="roteiro">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Roteiro Sugerido</h2>
+
+            <!-- Dia 1 -->
+            <div class="mb-10">
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-amber-600 mb-6">Dia 1: Chegada, Cultura Local e Rock Clássico</h3>
+                    <div class="relative">
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10 pb-8">
+                            <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Manhã (10:00)</p>
+                            <h4 class="font-bold text-lg mt-1">Chegada e Check-in</h4>
+                            <p class="text-slate-600">Acomode-se, relaxe e prepare-se para explorar a "Cidade Morena".</p>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10 pb-8">
+                            <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0 1.172 1.953 1.172 5.119 0 7.072z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a3 3 0 100-6 3 3 0 000 6z" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Tarde (14:00)</p>
+                            <h4 class="font-bold text-lg mt-1">Imersão no Pantanal Urbano</h4>
+                            <p class="text-slate-600">Visite o <a href="https://maps.app.goo.gl/9Cg8T2Y9pW9c381t7" target="_blank" class="text-amber-600 hover:underline font-semibold">Bioparque Pantanal</a>, o maior aquário de água doce do mundo. Uma experiência incrível com estacionamento amplo.</p>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10">
+                            <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Noite (20:00)</p>
+                            <h4 class="font-bold text-lg mt-1">Burger, Cerveja e Rock and Roll</h4>
+                            <p class="text-slate-600">Curta a noite no <a href="https://maps.app.goo.gl/56wU8b8WqX8N2E5Q8" target="_blank" class="text-amber-600 hover:underline font-semibold">ELVIRA's Rock Bar</a>. A pesquisa mostrou que é o que a galera gosta!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dia 2 -->
+            <div class="mb-10">
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-amber-600 mb-6">Dia 2: Aventura "Bate e Volta" e Gastronomia Regional</h3>
+                    <div class="relative">
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10 pb-8">
+                             <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1014.12 11.88a3 3 0 00-4.242 4.242z" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Manhã (09:00)</p>
+                            <h4 class="font-bold text-lg mt-1">Café da Manhã e Estrada</h4>
+                            <p class="text-slate-600">Comece o dia com um cafézinho, a tradicional Chipa e se prepare para pegar a estrada.</p>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10 pb-8">
+                            <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Manhã/Tarde (10:30 - 17:00)</p>
+                            <h4 class="font-bold text-lg mt-1">Rota "Bate e Volta" para Rochedo</h4>
+                            <p class="text-slate-600">Pegue a MS-080 (aprox. 80 km) e curta as paisagens do cerrado. Almoce comida caseira e aproveite a tranquilidade do interior.</p>
+                            <button id="suggest-route-btn" class="mt-4 bg-slate-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-slate-800 transition-colors text-sm">✨ Sugerir Outra Rota Cênica</button>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10">
+                            <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Noite (20:30)</p>
+                            <h4 class="font-bold text-lg mt-1">Jantar e Cultura Sul-Mato-Grossense</h4>
+                            <p class="text-slate-600">Mergulhe na cultura local na Feira Central. Não deixe de provar o Sobá, prato típico da cidade, e explorar o artesanato. (fechado às segundas e terças).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dia 3 -->
+            <div class="mb-10">
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-amber-600 mb-6">Dia 3: Compras, Despedida e Próxima Parada</h3>
+                    <div class="relative">
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10 pb-8">
+                            <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Manhã (10:00)</p>
+                            <h4 class="font-bold text-lg mt-1">Lembranças da Cidade Morena</h4>
+                            <p class="text-slate-600">Visite o Mercado Municipal (Mercadão) para comprar erva de tereré, doces, pimentas e  para o melhor do artesanato local, visite também a Casa do Artesão.</p>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10 pb-8">
+                            <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0c-.454-.303-.977-.454-1.5-.454V5.454c.523 0 1.046-.151 1.5-.454a2.704 2.704 0 013 0 2.704 2.704 0 003 0 2.704 2.704 0 013 0 2.704 2.704 0 003 0c.454.303.977.454 1.5.454v10.092zM15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Tarde (12:30)</p>
+                            <h4 class="font-bold text-lg mt-1">Almoço de Despedida</h4>
+                            <p class="text-slate-600">Escolha um dos ótimos restaurantes na Avenida Afonso Pena ou Centro da cidade para a última refeição na cidade.</p>
+                        </div>
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative pl-10">
+                            <div class="absolute left-0 top-0 h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                            </div>
+                            <p class="font-semibold text-slate-500">Tarde (14:00)</p>
+                            <h4 class="font-bold text-lg mt-1">Preparação para a Partida</h4>
+                            <p class="text-slate-600">Check-out e preparação para o próximo trecho da sua jornada. Campo Grande é sua casa na estrada!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gemini Feature: Playlist -->
+        <section id="gemini-playlist" class="mb-12 text-center">
+             <button id="generate-playlist-btn" class="bg-slate-800 text-white font-bold py-3 px-8 rounded-full hover:bg-black transition-transform hover:scale-105">✨ Gerar Playlist de Rock para a Estrada</button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-10">
+            <div class="bg-slate-800 text-white p-6 rounded-xl shadow-md">
+                <h3 class="font-bold text-lg">Dica de Segurança 🤘</h3>
+                <p class="mt-2 text-slate-300">Sempre utilize Waze ou Google Maps para navegação em tempo real. Compartilhe sua localização com amigos ou familiares. A estrada te espera!</p>
+            </div>
+            <p class="text-slate-500 mt-6">&copy; 2025 - Guia do Mototurista. Boa viagem e Bons ventos!</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Elementos da UI
+        const loaderModal = document.getElementById('loader-modal');
+        const loader = document.getElementById('loader');
+        const loaderText = document.getElementById('loader-text');
+        const modalContent = document.getElementById('modal-content');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        const personalizeBtn = document.getElementById('personalize-btn');
+        const userPreferenceInput = document.getElementById('user-preference-input');
+        const personalizedItineraryContainer = document.getElementById('personalized-itinerary');
+
+        const suggestRouteBtn = document.getElementById('suggest-route-btn');
+        const generatePlaylistBtn = document.getElementById('generate-playlist-btn');
+
+        // Funções do Modal
+        const showLoader = (text = 'Gerando conteúdo...') => {
+            loaderText.textContent = text;
+            modalContent.classList.add('hidden');
+            loader.classList.remove('hidden');
+            loaderText.classList.remove('hidden');
+            loaderModal.classList.remove('hidden');
+            loaderModal.classList.add('flex');
+        };
+
+        const showModalContent = (title, bodyHtml) => {
+            modalTitle.innerHTML = title;
+            modalBody.innerHTML = bodyHtml;
+            loader.classList.add('hidden');
+            loaderText.classList.add('hidden');
+            modalContent.classList.remove('hidden');
+        };
+
+        const hideModal = () => {
+            loaderModal.classList.add('hidden');
+            loaderModal.classList.remove('flex');
+        };
+
+        closeModalBtn.addEventListener('click', hideModal);
+
+        // Função para chamar a API Gemini com retry e backoff exponencial
+        async function callGemini(prompt, maxRetries = 3) {
+            const apiKey = ""; // A chave da API será injetada pelo ambiente
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            
+            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+            const payload = { contents: chatHistory };
+
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                         throw new Error('Resposta da API inválida ou sem conteúdo.');
+                    }
+                } catch (error) {
+                    console.error(`Tentativa ${i + 1} falhou:`, error);
+                    if (i === maxRetries - 1) {
+                        return `<p class="text-red-500">Erro ao gerar conteúdo. Por favor, tente novamente mais tarde.</p>`;
+                    }
+                    // Espera exponencial
+                    await new Promise(res => setTimeout(res, Math.pow(2, i) * 1000));
+                }
+            }
+        }
+
+        // Feature 1: Personalizar Roteiro
+        personalizeBtn.addEventListener('click', async () => {
+            const userPreference = userPreferenceInput.value;
+            if (!userPreference.trim()) {
+                alert('Por favor, digite sua preferência.');
+                return;
+            }
+
+            showLoader('Personalizando seu roteiro...');
+            const originalItineraryHtml = document.getElementById('roteiro').innerHTML;
+            const prompt = `Você é um guia turístico especialista em mototurismo. O roteiro original para 3 dias em Campo Grande, MS, é o seguinte (contido em HTML): ${originalItineraryHtml}. Por favor, modifique este roteiro para atender à seguinte preferência do usuário: "${userPreference}". Mantenha a estrutura de 3 dias e o formato de timeline com ícones. A resposta deve ser apenas o código HTML para a seção do roteiro, começando com <h2 class="text-3xl...">Roteiro Personalizado</h2>. Use classes do Tailwind CSS para estilização, mantendo o estilo visual do roteiro original.`;
+
+            const resultHtml = await callGemini(prompt);
+            personalizedItineraryContainer.innerHTML = resultHtml;
+            hideModal();
+        });
+
+        // Feature 2: Sugerir Nova Rota
+        suggestRouteBtn.addEventListener('click', async () => {
+            showLoader('Buscando uma nova rota cênica...');
+            const prompt = `Você é um guia turístico especialista em mototurismo em Mato Grosso do Sul. Sugira uma rota cênica de "bate e volta" de 1 dia para um motociclista saindo de Campo Grande, que seja uma alternativa à rota para Rochedo. Descreva o trajeto, a distância aproximada, o que torna a estrada especial (curvas, paisagens) e uma sugestão de parada para almoço. A resposta deve ser em HTML, com parágrafos e títulos (h4) usando classes do Tailwind CSS.`;
+            
+            const resultHtml = await callGemini(prompt);
+            showModalContent('✨ Sugestão de Rota Cênica', resultHtml);
+        });
+
+        // Feature 3: Gerar Playlist
+        generatePlaylistBtn.addEventListener('click', async () => {
+            showLoader('Criando a trilha sonora perfeita...');
+            const prompt = `Crie uma lista de 10 músicas de rock (clássico, hard rock) perfeitas para uma viagem de moto. Para cada música, liste o nome da música e o artista no formato "Nome da Música - Artista". Não adicione numeração ou marcadores, apenas uma música por linha.`;
+
+            const resultText = await callGemini(prompt);
+            const songs = resultText.split('\n').filter(s => s.trim() !== '');
+            
+            let playlistHtml = '<ul class="list-none space-y-2">';
+            songs.forEach(song => {
+                const parts = song.split(' - ');
+                if(parts.length === 2) {
+                    playlistHtml += `<li class="p-3 bg-slate-100 rounded-lg"><span class="font-bold">${parts[0]}</span> - <span class="text-slate-600">${parts[1]}</span></li>`;
+                }
+            });
+            playlistHtml += '</ul>';
+
+            showModalContent('🤘 Playlist para a Estrada 🤘', playlistHtml);
+        });
+
+    </script>
+</body>
+</html>
