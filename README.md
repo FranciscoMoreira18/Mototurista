@@ -52,7 +52,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-geo-alt-fill mr-3 text-amber-500" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
                 Hospedagem com Garagem Segura
             </h2>
-            <p class="text-slate-600 mb-6">A pesquisa indicou que 87% dos motociclistas se sentem seguros com os estacionamentos da cidade. Aqui estão algumas ótimas opções:</p>
+            <p class="text-slate-600 mb-6">A pesquisa realizada pelo acadêmico indicou que 87% dos motociclistas se sentem seguros com os estacionamentos da cidade. Aqui estão algumas ótimas opções:</p>
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Hotel Card -->
                 <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
@@ -100,8 +100,15 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0 1.172 1.953 1.172 5.119 0 7.072z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a3 3 0 100-6 3 3 0 000 6z" /></svg>
                             </div>
                             <p class="font-semibold text-slate-500">Tarde (14:00)</p>
-                            <h4 class="font-bold text-lg mt-1">Imersão no Pantanal Urbano</h4>
-                            <p class="text-slate-600">Visite o <a href="https://maps.app.goo.gl/9Cg8T2Y9pW9c381t7" target="_blank" class="text-amber-600 hover:underline font-semibold">Bioparque Pantanal</a>, o maior aquário de água doce do mundo. Uma experiência incrível com estacionamento amplo.</p>
+                            <h4 class="font-bold text-lg mt-1">Cultura e Natureza na Cidade</h4>
+                            <p class="text-slate-600">Aproveite essas opções para a sua tarde:
+                                <ul class="list-disc list-inside mt-2 text-slate-600 space-y-1">
+                                    <li><strong>Bioparque Pantanal:</strong> Visite o maior aquário de água doce do mundo.</li>
+                                    <li><strong>Parque das Nações Indígenas:</strong> Ideal para uma caminhada relaxante e para apreciar a paisagem e o pôr do sol.</li>
+                                    <li><strong>Museu das Culturas Dom Bosco (UCDB):</strong> Conhecido como Museu do Índio, possui um acervo riquíssimo sobre as culturas indígenas e a fauna local.</li>
+                                    <li><strong>Parque dos Poderes:</strong> Uma volta de moto pela área verde que concentra os prédios administrativos do estado, com chance de avistar animais silvestres.</li>
+                                </ul>
+                            </p>
                         </div>
                         <!-- Timeline Item -->
                         <div class="timeline-item relative pl-10">
@@ -109,8 +116,13 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" /></svg>
                             </div>
                             <p class="font-semibold text-slate-500">Noite (20:00)</p>
-                            <h4 class="font-bold text-lg mt-1">Burger, Cerveja e Rock and Roll</h4>
-                            <p class="text-slate-600">Curta a noite no <a href="https://maps.app.goo.gl/56wU8b8WqX8N2E5Q8" target="_blank" class="text-amber-600 hover:underline font-semibold">ELVIRA's Rock Bar</a>. A pesquisa mostrou que é o que a galera gosta!</p>
+                            <h4 class="font-bold text-lg mt-1">Gastronomia e Música</h4>
+                            <p class="text-slate-600">Para a noite, escolha seu estilo:
+                                <ul class="list-disc list-inside mt-2 text-slate-600 space-y-1">
+                                    <li><strong>Rock and Roll:</strong> Curta a noite no <a href="https://maps.app.goo.gl/56wU8b8WqX8N2E5Q8" target="_blank" class="text-amber-600 hover:underline font-semibold">ELVIRA's Rock Bar</a>, um clássico da cidade.</li>
+                                    <li><strong>Comida Típica:</strong> Para uma experiência mais local, o <strong>Bar do Japonês</strong> oferece uma estrutura simples com ótimo atendimento e pratos regionais.</li>
+                                </ul>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -144,7 +156,7 @@
                                 <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
                                     <h5 class="font-bold text-slate-800">Opção 1: Estrada Parque de Piraputanga e Vinícola</h5>
                                     <p class="text-sm text-slate-600 mt-1"><strong>Distância:</strong> ~140 km (ida) | <strong>Destaques:</strong> Estrada cênica com curvas, paisagens da serra e degustação de vinhos.</p>
-                                    <p class="text-sm text-slate-600 mt-2">Pegue a BR-262 e entre na MS-450, a famosa Estrada Parque de Piraputanga. O trecho é sinuoso e cercado pela natureza. A parada obrigatória é na <a href="https://www.terroirpantanal.com.br/" target="_blank" class="text-amber-600 font-semibold">Vinícola Terroir Pantanal</a> em Camisão para conhecer os vinhos de inverno da região. Almoce em Aquidauana antes de retornar.</p>
+                                    <p class="text-sm text-slate-600 mt-2">Pegue a BR-262 e entre na MS-450, a famosa Estrada Parque de Piraputanga. O trecho é sinuoso e cercado pela natureza. A parada obrigatória é na <a href="https://www.terroirpantanal.com.br/" target="_blank" class="text-amber-600 font-semibold">Vinícola Terroir Pantanal</a> em Camisão para conhecer os vinhos de inverno da região e a bela vista do Morro do Paxixi. Almoce em Aquidauana antes de retornar.</p>
                                 </div>
                                 <!-- Opção 2: Rochedinho -->
                                 <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
@@ -166,8 +178,13 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                             </div>
                             <p class="font-semibold text-slate-500">Noite (20:30)</p>
-                            <h4 class="font-bold text-lg mt-1">Jantar e Cultura Sul-Mato-Grossense</h4>
-                            <p class="text-slate-600">Após o retorno, mergulhe na cultura local na Feira Central. Não deixe de provar o Sobá, prato típico da cidade, e explorar o artesanato. (fechado às segundas e terças).</p>
+                            <h4 class="font-bold text-lg mt-1">Jantar e Descanso</h4>
+                            <p class="text-slate-600">Depois de um dia na estrada, escolha onde recarregar as energias:
+                                <ul class="list-disc list-inside mt-2 text-slate-600 space-y-1">
+                                    <li><strong>Cultura Local:</strong> Mergulhe na cultura local na <strong>Feira Central</strong>. Prove o famoso Sobá e explore o artesanato. (Fechado às segundas e terças).</li>
+                                    <li><strong>Steak & Rock:</strong> Relaxe no <strong>Old Sheep Steak Bar</strong>, um pub com temática de rock, ótimos cortes de carne e cervejas artesanais.</li>
+                                </ul>
+                            </p>
                         </div>
                     </div>
                 </div>
